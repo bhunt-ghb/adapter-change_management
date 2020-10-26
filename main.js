@@ -152,11 +152,8 @@ class ServiceNowAdapter extends EventEmitter {
      * Note how the object was instantiated in the constructor().
      * get() takes a callback function.
      */
-    let getCallOptions = { ...this.options };
-    getCallOptions.method = 'GET';
-    this.sendRequest(getCallOptions, (results, error) => callback(results, error));
-    }
-  
+     connector.get((data,error)=> {return callback(data,error)});
+  }
 
   /**
    * @memberof ServiceNowAdapter
@@ -174,9 +171,8 @@ class ServiceNowAdapter extends EventEmitter {
      * Note how the object was instantiated in the constructor().
      * post() takes a callback function.
      */
-  let postCallOptions = { ...this.options };
-  postCallOptions.method = 'POST';
-  this.sendRequest(postCallOptions, (results, error) => callback(results, error));
+     connector.post((data,error)=> {return callback(data,error)});
   }
+}
 
 module.exports = ServiceNowAdapter;
